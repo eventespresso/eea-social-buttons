@@ -2,40 +2,40 @@
 /**
  * ------------------------------------------------------------------------
  *
- * Class  EE_Socialbuttons
+ * Class  EE_Social_Buttons
  *
  * @package			Event Espresso
- * @subpackage		espresso-socialbuttons
+ * @subpackage		espresso-social_buttons
  * @author			    Brent Christensen
  * @ version		 	$VID:$
  *
  * ------------------------------------------------------------------------
  */
 // define the plugin directory path and URL
-define( 'EE_SOCIALBUTTONS_PATH', plugin_dir_path( __FILE__ ));
-define( 'EE_SOCIALBUTTONS_URL', plugin_dir_url( __FILE__ ));
-define( 'EE_SOCIALBUTTONS_ADMIN', EE_SOCIALBUTTONS_PATH . 'admin' . DS . 'socialbuttons' . DS );
-Class  EE_Socialbuttons extends EE_Addon {
+define( 'EE_SOCIAL_BUTTONS_PATH', plugin_dir_path( __FILE__ ));
+define( 'EE_SOCIAL_BUTTONS_URL', plugin_dir_url( __FILE__ ));
+define( 'EE_SOCIAL_BUTTONS_ADMIN', EE_SOCIAL_BUTTONS_PATH . 'admin' . DS . 'social_buttons' . DS );
+Class  EE_Social_Buttons extends EE_Addon {
 
 	/**
 	 * class constructor
 	 */
 	public function __construct() {
 		//load main class for hooks
-		require_once EE_SOCIALBUTTONS_PATH .  'core/EE_Socialbuttons_Hooks.core.php';
+		require_once EE_SOCIAL_BUTTONS_PATH .  'core/EE_Social_Buttons_Hooks.core.php';
 	}
 
 	public static function register_addon() {
 		// register addon via Plugin API
 		EE_Register_Addon::register(
-			'Socialbuttons',
+			'Social_Buttons',
 			array(
-				'version' 					=> EE_SOCIALBUTTONS_VERSION,
+				'version' 					=> EE_SOCIAL_BUTTONS_VERSION,
 				'min_core_version' => '4.4.4',
-				'main_file_path' 				=> EE_SOCIALBUTTONS_PLUGIN_FILE,
+				'main_file_path' 				=> EE_SOCIAL_BUTTONS_PLUGIN_FILE,
 				'pue_options'			=> array(
-					'pue_plugin_slug' => 'eea-socialbuttons',
-					'plugin_basename' => EE_SOCIALBUTTONS_BASE_NAME,
+					'pue_plugin_slug' => 'eea-social_buttons',
+					'plugin_basename' => EE_SOCIAL_BUTTONS_BASE_NAME,
 					'checkPeriod' => '24',
 					'use_wp_update' => FALSE
 				),
@@ -67,5 +67,5 @@ Class  EE_Socialbuttons extends EE_Addon {
 
 
 }
-// End of file EE_Socialbuttons.class.php
-// Location: wp-content/plugins/espresso-socialbuttons/EE_Socialbuttons.class.php
+// End of file EE_Social_Buttons.class.php
+// Location: wp-content/plugins/espresso-social_buttons/EE_Social_Buttons.class.php

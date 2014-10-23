@@ -37,16 +37,16 @@
  *
  * ------------------------------------------------------------------------
  */
-define( 'EE_SOCIALBUTTONS_VERSION', '0.0.1.dev.002' );
-define( 'EE_SOCIALBUTTONS_PLUGIN_FILE',  __FILE__ );
-define( 'EE_SOCIALBUTTONS_BASE_NAME', plugin_basename(__FILE__) );
-function load_espresso_socialbuttons() {
+define( 'EE_SOCIAL_BUTTONS_VERSION', '0.0.1.dev.002' );
+define( 'EE_SOCIAL_BUTTONS_PLUGIN_FILE',  __FILE__ );
+define( 'EE_SOCIAL_BUTTONS_BASE_NAME', plugin_basename(__FILE__) );
+function load_espresso_social_buttons() {
 if ( class_exists( 'EE_Addon' )) {
-	require_once ( plugin_dir_path( __FILE__ ) . 'EE_Socialbuttons.class.php' );
-	EE_Socialbuttons::register_addon();
+	require_once ( plugin_dir_path( __FILE__ ) . 'EE_Social_Buttons.class.php' );
+	EE_Social_Buttons::register_addon();
 }
 }
-add_action( 'AHEE__EE_System__load_espresso_addons', 'load_espresso_socialbuttons' );
+add_action( 'AHEE__EE_System__load_espresso_addons', 'load_espresso_social_buttons' );
 
-// End of file espresso_socialbuttons.php
-// Location: wp-content/plugins/espresso-socialbuttons/espresso_socialbuttons.php
+// End of file espresso_social_buttons.php
+// Location: wp-content/plugins/espresso-social_buttons/espresso_social_buttons.php
