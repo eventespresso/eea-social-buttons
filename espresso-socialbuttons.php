@@ -1,0 +1,51 @@
+<?php
+/*
+  Plugin Name: Event Espresso - Social Buttons (EE4.4.4+)
+  Plugin URI: http://www.eventespresso.com
+  Description: The Event Espresso Social Buttons displays social media buttons after a successful registration in Event Espresso. Compatible with Event Espresso 4.4.4 or higher.
+  Version: 0.0.1.dev.002
+  Author: Event Espresso
+  Author URI: http://www.eventespresso.com
+  Copyright 2014 Event Espresso (email : support@eventespresso.com)
+
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License, version 2, as
+  published by the Free Software Foundation.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA02110-1301USA
+ *
+ * ------------------------------------------------------------------------
+ *
+ * Event Espresso
+ *
+ * Event Registration and Management Plugin for WordPress
+ *
+ * @ package		Event Espresso
+ * @ author			Event Espresso
+ * @ copyright	(c) 2008-2014 Event Espresso  All Rights Reserved.
+ * @ license		http://eventespresso.com/support/terms-conditions/   * see Plugin Licensing *
+ * @ link				http://www.eventespresso.com
+ * @ version	 	EE4
+ *
+ * ------------------------------------------------------------------------
+ */
+define( 'EE_SOCIALBUTTONS_VERSION', '0.0.1.dev.002' );
+define( 'EE_SOCIALBUTTONS_PLUGIN_FILE',  __FILE__ );
+define( 'EE_SOCIALBUTTONS_BASE_NAME', plugin_basename(__FILE__) );
+function load_espresso_socialbuttons() {
+if ( class_exists( 'EE_Addon' )) {
+	require_once ( plugin_dir_path( __FILE__ ) . 'EE_Socialbuttons.class.php' );
+	EE_Socialbuttons::register_addon();
+}
+}
+add_action( 'AHEE__EE_System__load_espresso_addons', 'load_espresso_socialbuttons' );
+
+// End of file espresso_socialbuttons.php
+// Location: wp-content/plugins/espresso-socialbuttons/espresso_socialbuttons.php
