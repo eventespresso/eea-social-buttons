@@ -15,7 +15,7 @@
 define( 'EE_SOCIAL_BUTTONS_PATH', plugin_dir_path( __FILE__ ));
 define( 'EE_SOCIAL_BUTTONS_URL', plugin_dir_url( __FILE__ ));
 define( 'EE_SOCIAL_BUTTONS_ADMIN', EE_SOCIAL_BUTTONS_PATH . 'admin' . DS . 'social_buttons' . DS );
-define( 'EE_SOCIAL_BUTTONS_TEMPLATES', EE_SOCIAL_BUTTONS_PATH . DS . 'templates' );
+define( 'EE_SOCIAL_BUTTONS_TEMPLATES', EE_SOCIAL_BUTTONS_PATH . DS . 'templates' . DS );
 Class  EE_Social_Buttons extends EE_Addon {
 
 	/**
