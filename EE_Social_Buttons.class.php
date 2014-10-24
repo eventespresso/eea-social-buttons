@@ -21,8 +21,6 @@ Class  EE_Social_Buttons extends EE_Addon {
 	 * class constructor
 	 */
 	public function __construct() {
-		//load main class for hooks
-		require_once EE_SOCIAL_BUTTONS_PATH .  'core/EE_Social_Buttons_Hooks.core.php';
 	}
 
 	public static function register_addon() {

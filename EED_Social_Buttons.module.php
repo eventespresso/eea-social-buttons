@@ -98,20 +98,9 @@ class EED_Social_Buttons {
 		<h3 class="ee-registration-social_buttons-h3"><?php echo __('Support us on Social Media -- Spread the Word', 'event_espresso'); ?></h3>
 
 		<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo $transaction->primary_registration()->event()->get_permalink(); ?>" data-text="<?php echo sprintf(__('I just registered for %1s at %2s', 'event_espresso'), $event_name, EE_Registry::instance()->CFG->organization->name); ?>"  data-via="<?php echo $co_twitter; ?>" data-size="large"><?php echo __('Tweet', 'event_espresso'); ?></a>
-		<script>/*!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');*/</script>
 
 		<div id="fb-root"></div>
 
-		<script>/*
-			(function(d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (d.getElementById(id)) return;
-				js = d.createElement(s); js.id = id;
-				js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=<?php echo EE_Registry::instance()->CFG->organization->facebook; ?>";
-				fjs.parentNode.insertBefore(js, fjs);
-			}
-			(document, 'script', 'facebook-jssdk'));
-		*/</script>
 
 		<div class="fb-like" data-href="<?php echo $transaction->primary_registration()->event()->get_permalink(); ?>" data-send="true" data-width="450" data-show-faces="true"></div>
 
