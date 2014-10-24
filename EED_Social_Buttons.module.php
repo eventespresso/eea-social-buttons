@@ -27,8 +27,8 @@ class EED_Social_Buttons {
 	public static function set_hooks() {
 
 		//Facebook
-		//add_action( 'AHEE__thank_you_page_overview_template__content', array( __CLASS__, 'ee_social_thank_you_fb'), 10, 1 );
-		add_action( 'AHEE__thank_you_page_overview_template__bottom', array( __CLASS__, 'ee_social_thank_you_fb'), 10, 1 );
+		//add_action( 'AHEE__thank_you_page_overview_template__content', array( __CLASS__, 'ee_social_thank_you'), 10, 1 );
+		add_action( 'AHEE__thank_you_page_overview_template__bottom', array( __CLASS__, 'ee_social_thank_you'), 10, 1 );
 
 	}
 
@@ -40,7 +40,8 @@ class EED_Social_Buttons {
 	  * @return    void
 	  */
 	 public function run( $WP ) {
-		 add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ));
+		 //This doesn't seem to work\
+		 //add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ));
 	 }
 
 
@@ -51,22 +52,42 @@ class EED_Social_Buttons {
 	 *  @return 	void
 	 */
 	public function enqueue_scripts() {
+		//This doesn't seem to work, so moved below
+		/*
 		//Check to see if the new_addon JS file exists in the '/uploads/espresso/' directory
 		if ( is_readable( EVENT_ESPRESSO_UPLOAD_DIR . "scripts/espresso_social_buttons.js")) {
 			//This is the url to the JS file if available
-			wp_register_script( 'espresso_social_buttons', EVENT_ESPRESSO_UPLOAD_URL . 'scripts/espresso_social_buttons.js', array( 'jquery' ), EE_SOCIAL_BUTTONS_VERSION, TRUE );
+			wp_register_script( 'social_buttons_js_handle', EVENT_ESPRESSO_UPLOAD_URL . 'scripts/espresso_social_buttons.js' );
 		} else {
-			wp_register_script( 'espresso_social_buttons', EE_SOCIAL_BUTTONS_URL . 'scripts/espresso_social_buttons.js', array( 'jquery' ), EE_SOCIAL_BUTTONS_VERSION, TRUE );
+			wp_register_script( 'social_buttons_js_handle', EE_SOCIAL_BUTTONS_URL . 'scripts/espresso_social_buttons.js' );
 		}
-		
+
+		wp_enqueue_script( 'social_buttons_js_handle' );
+		*/
 	}
 
 
 	//Facebook
-	public static function ee_social_thank_you_fb($transaction) {
+	public static function ee_social_thank_you($transaction) {
 		//Debug
 		//d($transaction);
 		
+		//Check to see if the new_addon JS file exists in the '/uploads/espresso/' directory
+		if ( is_readable( EVENT_ESPRESSO_UPLOAD_DIR . "scripts/espresso_social_buttons.js")) {
+			//This is the url to the JS file if available
+			wp_register_script( 'social_buttons_js_handle', EVENT_ESPRESSO_UPLOAD_URL . 'scripts/espresso_social_buttons.js' );
+		} else {
+			wp_register_script( 'social_buttons_js_handle', EE_SOCIAL_BUTTONS_URL . 'scripts/espresso_social_buttons.js' );
+		}
+		wp_enqueue_script( 'social_buttons_js_handle' );
+
+		//JS vars
+		$social_buttons_js_vars = array( 
+     		'facebook' => EE_Registry::instance()->CFG->organization->facebook,
+  		);
+		wp_localize_script( 'social_buttons_js_handle', 'ee_social_buttons', $social_buttons_js_vars );
+
+
 		//Get the Twitter handle, else use EventEspresso as the default
 		$co_twitter = EE_Registry::instance()->CFG->organization->twitter;
 		if (!empty($co_twitter)){
@@ -75,6 +96,7 @@ class EED_Social_Buttons {
 		}else{
 			$co_twitter = "EventEspresso";
 		}
+
 
 		//Get the event name
 		$event_name = '';
@@ -86,27 +108,34 @@ class EED_Social_Buttons {
 			}
 		}
 
-		$social_buttons_js_vars = array( 
-     		'facebook' => EE_Registry::instance()->CFG->organization->facebook,
-  		);
-		wp_localize_script( 'social_buttons_js_handle', 'ee_social_buttons', $social_buttons_js_vars );
+
+		//Template vars
+		$template_args = array( 
+			'template_file'			=> 'espresso-social-buttons-template.template.php', //Default template file
+			'event_permalink' 		=> $transaction->primary_registration()->event()->get_permalink(),
+			'organization_name' 	=> EE_Registry::instance()->CFG->organization->name,
+			'event_name' 			=> $event_name,
+			'co_twitter' 			=> $co_twitter,
+		 );
+
+		// now filter the array of locations to search for templates
+		add_filter( 'FHEE__EEH_Template__locate_template__template_folder_paths', array( __CLASS__, 'template_folder_paths' ));
+
+		$social_buttons_template = EEH_Template::locate_template( $template_args['template_file'], $template_args );
 		
+		return $social_buttons_template;		
+	}
 
-		//Output the buttons
-		?>
-
-		<h3 class="ee-registration-social_buttons-h3"><?php echo __('Support us on Social Media -- Spread the Word', 'event_espresso'); ?></h3>
-
-		<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo $transaction->primary_registration()->event()->get_permalink(); ?>" data-text="<?php echo sprintf(__('I just registered for %1s at %2s', 'event_espresso'), $event_name, EE_Registry::instance()->CFG->organization->name); ?>"  data-via="<?php echo $co_twitter; ?>" data-size="large"><?php echo __('Tweet', 'event_espresso'); ?></a>
-
-		<div id="fb-root"></div>
-
-
-		<div class="fb-like" data-href="<?php echo $transaction->primary_registration()->event()->get_permalink(); ?>" data-send="true" data-width="450" data-show-faces="true"></div>
-
-		<?php
-		//Finish up
-		
+	/**
+	 *    template_folder_paths
+	 *
+	 * @access    public
+	 * @param array $template_folder_paths
+	 * @return    array
+	 */
+	public function template_folder_paths( $template_folder_paths = array() ) {
+		$template_folder_paths[] = EE_SOCIAL_BUTTONS_TEMPLATES;
+		return $template_folder_paths;
 	}
 	
 } //end EE_Social_Buttons_Hooks
