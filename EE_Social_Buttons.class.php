@@ -30,14 +30,15 @@ Class  EE_Social_Buttons extends EE_Addon {
 		EE_Register_Addon::register(
 			'Social_Buttons',
 			array(
-				'version' 					=> EE_SOCIAL_BUTTONS_VERSION,
-				'min_core_version' => '4.4.4',
-				'main_file_path' 				=> EE_SOCIAL_BUTTONS_PLUGIN_FILE,
+				'version' 				=> EE_SOCIAL_BUTTONS_VERSION,
+				'min_core_version' 		=> '4.4.4',
+				'main_file_path' 		=> EE_SOCIAL_BUTTONS_PLUGIN_FILE,
+				'module_paths' 			=> array( EE_SOCIAL_BUTTONS_PATH .  'EED_Social_Buttons.module.php' ),
 				'pue_options'			=> array(
-					'pue_plugin_slug' => 'eea-social_buttons',
-					'plugin_basename' => EE_SOCIAL_BUTTONS_BASE_NAME,
-					'checkPeriod' => '24',
-					'use_wp_update' => FALSE
+					'pue_plugin_slug' 	=> 'eea-social_buttons',
+					'plugin_basename' 	=> EE_SOCIAL_BUTTONS_BASE_NAME,
+					'checkPeriod' 		=> '24',
+					'use_wp_update' 	=> FALSE
 				),
 			)
 		);

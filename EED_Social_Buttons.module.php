@@ -15,7 +15,7 @@
  * @subpackage main
  * @author Seth Shoultes
  */
-class EE_Social_Buttons_Hooks {
+class EED_Social_Buttons {
 
 	/**
 	 * contains all hooks used for social_buttons
@@ -24,10 +24,7 @@ class EE_Social_Buttons_Hooks {
 	 *
 	 * @return void
 	 */
-	public static function init_hooks() {
-
-		//hook format example
-		//add_action( 'wp_head', array( __CLASS__, 'hook_callback' ), 10 );
+	public static function set_hooks() {
 
 		//Facebook
 		//add_action( 'AHEE__thank_you_page_overview_template__content', array( __CLASS__, 'ee_social_thank_you_fb'), 10, 1 );
@@ -35,14 +32,35 @@ class EE_Social_Buttons_Hooks {
 
 	}
 
-	/*
-	//example callback for thing_to_hook_into action.
-	public static function hook_callback() {		
-		//Display an alert on the front-facing pages
-		$output="<script> alert('Page is loading...'); </script>";
-		echo $output;
+	/**
+	  *    run - initial module setup
+	  *
+	  * @access    public
+	  * @param  WP $WP
+	  * @return    void
+	  */
+	 public function run( $WP ) {
+		 add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ));
+	 }
+
+
+	/**
+	 * 	enqueue_scripts - Load the scripts and css
+	 *
+	 *  @access 	public
+	 *  @return 	void
+	 */
+	public function enqueue_scripts() {
+		//Check to see if the new_addon JS file exists in the '/uploads/espresso/' directory
+		if ( is_readable( EVENT_ESPRESSO_UPLOAD_DIR . "scripts/espresso_social_buttons.js")) {
+			//This is the url to the JS file if available
+			wp_register_script( 'espresso_social_buttons', EVENT_ESPRESSO_UPLOAD_URL . 'scripts/espresso_social_buttons.js', array( 'jquery' ), EE_SOCIAL_BUTTONS_VERSION, TRUE );
+		} else {
+			wp_register_script( 'espresso_social_buttons', EE_SOCIAL_BUTTONS_URL . 'scripts/espresso_social_buttons.js', array( 'jquery' ), EE_SOCIAL_BUTTONS_VERSION, TRUE );
+		}
+		
 	}
-	*/
+
 
 	//Facebook
 	public static function ee_social_thank_you_fb($transaction) {
@@ -68,17 +86,23 @@ class EE_Social_Buttons_Hooks {
 			}
 		}
 
+		$social_buttons_js_vars = array( 
+     		'facebook' => EE_Registry::instance()->CFG->organization->facebook,
+  		);
+		wp_localize_script( 'social_buttons_js_handle', 'ee_social_buttons', $social_buttons_js_vars );
+		
+
 		//Output the buttons
 		?>
 
 		<h3 class="ee-registration-social_buttons-h3"><?php echo __('Support us on Social Media -- Spread the Word', 'event_espresso'); ?></h3>
 
 		<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo $transaction->primary_registration()->event()->get_permalink(); ?>" data-text="<?php echo sprintf(__('I just registered for %1s at %2s', 'event_espresso'), $event_name, EE_Registry::instance()->CFG->organization->name); ?>"  data-via="<?php echo $co_twitter; ?>" data-size="large"><?php echo __('Tweet', 'event_espresso'); ?></a>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		<script>/*!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');*/</script>
 
 		<div id="fb-root"></div>
 
-		<script>
+		<script>/*
 			(function(d, s, id) {
 				var js, fjs = d.getElementsByTagName(s)[0];
 				if (d.getElementById(id)) return;
@@ -87,7 +111,7 @@ class EE_Social_Buttons_Hooks {
 				fjs.parentNode.insertBefore(js, fjs);
 			}
 			(document, 'script', 'facebook-jssdk'));
-		</script>
+		*/</script>
 
 		<div class="fb-like" data-href="<?php echo $transaction->primary_registration()->event()->get_permalink(); ?>" data-send="true" data-width="450" data-show-faces="true"></div>
 
@@ -97,5 +121,3 @@ class EE_Social_Buttons_Hooks {
 	}
 	
 } //end EE_Social_Buttons_Hooks
-
-EE_Social_Buttons_Hooks::init_hooks();
