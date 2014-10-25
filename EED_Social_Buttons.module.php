@@ -25,11 +25,12 @@ class EED_Social_Buttons {
 	 * @return void
 	 */
 	public static function set_hooks() {
-		//Facebook
 		add_action( 'AHEE__thank_you_page_overview_template__bottom', array( 'EED_Social_Buttons', 'thank_you_page_buttons'), 10, 1 );
-		//This doesn't seem to work\
 		add_action( 'wp_enqueue_scripts', array( 'EED_Social_Buttons', 'enqueue_scripts' ));
 	}
+	
+	public static function set_hooks_admin() {}
+
 
 	/**
 	  *    run - initial module setup
