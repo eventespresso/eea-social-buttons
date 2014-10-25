@@ -41,10 +41,10 @@ define( 'EE_SOCIAL_BUTTONS_VERSION', '0.0.1.dev.002' );
 define( 'EE_SOCIAL_BUTTONS_PLUGIN_FILE',  __FILE__ );
 define( 'EE_SOCIAL_BUTTONS_BASE_NAME', plugin_basename(__FILE__) );
 function load_espresso_social_buttons() {
-if ( class_exists( 'EE_Addon' )) {
-	require_once ( plugin_dir_path( __FILE__ ) . 'EE_Social_Buttons.class.php' );
-	EE_Social_Buttons::register_addon();
-}
+  if ( class_exists( 'EE_Addon' )) {
+  	require_once ( plugin_dir_path( __FILE__ ) . 'EE_Social_Buttons.class.php' );
+  	EE_Social_Buttons::register_addon();
+  }
 }
 add_action( 'AHEE__EE_System__load_espresso_addons', 'load_espresso_social_buttons' );
 

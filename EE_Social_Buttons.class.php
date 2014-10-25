@@ -15,14 +15,13 @@
 define( 'EE_SOCIAL_BUTTONS_PATH', plugin_dir_path( __FILE__ ));
 define( 'EE_SOCIAL_BUTTONS_URL', plugin_dir_url( __FILE__ ));
 define( 'EE_SOCIAL_BUTTONS_ADMIN', EE_SOCIAL_BUTTONS_PATH . 'admin' . DS . 'social_buttons' . DS );
+define( 'EE_SOCIAL_BUTTONS_TEMPLATES', EE_SOCIAL_BUTTONS_PATH . DS . 'templates' . DS );
 Class  EE_Social_Buttons extends EE_Addon {
 
 	/**
 	 * class constructor
 	 */
 	public function __construct() {
-		//load main class for hooks
-		require_once EE_SOCIAL_BUTTONS_PATH .  'core/EE_Social_Buttons_Hooks.core.php';
 	}
 
 	public static function register_addon() {
@@ -30,14 +29,15 @@ Class  EE_Social_Buttons extends EE_Addon {
 		EE_Register_Addon::register(
 			'Social_Buttons',
 			array(
-				'version' 					=> EE_SOCIAL_BUTTONS_VERSION,
-				'min_core_version' => '4.4.4',
-				'main_file_path' 				=> EE_SOCIAL_BUTTONS_PLUGIN_FILE,
+				'version' 				=> EE_SOCIAL_BUTTONS_VERSION,
+				'min_core_version' 		=> '4.4.4',
+				'main_file_path' 		=> EE_SOCIAL_BUTTONS_PLUGIN_FILE,
+				'module_paths' 			=> array( EE_SOCIAL_BUTTONS_PATH .  'EED_Social_Buttons.module.php' ),
 				'pue_options'			=> array(
-					'pue_plugin_slug' => 'eea-social_buttons',
-					'plugin_basename' => EE_SOCIAL_BUTTONS_BASE_NAME,
-					'checkPeriod' => '24',
-					'use_wp_update' => FALSE
+					'pue_plugin_slug' 	=> 'eea-social_buttons',
+					'plugin_basename' 	=> EE_SOCIAL_BUTTONS_BASE_NAME,
+					'checkPeriod' 		=> '24',
+					'use_wp_update' 	=> FALSE
 				),
 			)
 		);
