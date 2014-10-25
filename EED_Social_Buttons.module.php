@@ -25,7 +25,13 @@ class EED_Social_Buttons {
 	 * @return void
 	 */
 	public static function set_hooks() {
+		//Adds sharing above the registration details
+		//add_action( 'AHEE__thank_you_page_overview_template__content', array( 'EED_Social_Buttons', 'thank_you_page_buttons'), 10, 1 );
+		
+		//Adds sharing below the registration details
 		add_action( 'AHEE__thank_you_page_overview_template__bottom', array( 'EED_Social_Buttons', 'thank_you_page_buttons'), 10, 1 );
+		
+		//Enqueue scripts and styles
 		add_action( 'wp_enqueue_scripts', array( 'EED_Social_Buttons', 'enqueue_scripts' ));
 	}
 	
@@ -114,7 +120,4 @@ class EED_Social_Buttons {
 	}
 
 
-
-
 }
-//end EE_Social_Buttons_Hooks
