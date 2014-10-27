@@ -16,6 +16,7 @@ define( 'EE_SOCIAL_BUTTONS_PATH', plugin_dir_path( __FILE__ ));
 define( 'EE_SOCIAL_BUTTONS_URL', plugin_dir_url( __FILE__ ));
 define( 'EE_SOCIAL_BUTTONS_ADMIN', EE_SOCIAL_BUTTONS_PATH . 'admin' . DS . 'social_buttons' . DS );
 define( 'EE_SOCIAL_BUTTONS_TEMPLATES', EE_SOCIAL_BUTTONS_PATH . DS . 'templates' . DS );
+define( 'EE_SOCIAL_BUTTONS_ADMIN', EE_SOCIAL_BUTTONS_PATH . 'admin' . DS . 'new_addon' . DS );
 Class  EE_Social_Buttons extends EE_Addon {
 
 	/**
@@ -32,6 +33,16 @@ Class  EE_Social_Buttons extends EE_Addon {
 				'version' 				=> EE_SOCIAL_BUTTONS_VERSION,
 				'min_core_version' 		=> '4.4.4',
 				'main_file_path' 		=> EE_SOCIAL_BUTTONS_PLUGIN_FILE,
+				'admin_path' 			=> EE_SOCIAL_BUTTONS_ADMIN,
+				'admin_callback'		=> 'additional_admin_hooks',
+				'config_class' 			=> 'EE_Social_Buttons_Config',
+				'config_name' 		=> 'EE_Social_Buttons',
+				'autoloader_paths' => array(
+					'EE_Social_Buttons' 						=> EE_SOCIAL_BUTTONS_PATH . 'EE_Social_Buttons.class.php',
+					'EE_Social_Buttons_Config' 			=> EE_SOCIAL_BUTTONS_PATH . 'EE_Social_Buttons_Config.php',
+					'Social_Buttons_Admin_Page' 		=> EE_SOCIAL_BUTTONS_ADMIN . 'Social_Buttons_Admin_Page.core.php',
+					'Social_Buttons_Admin_Page_Init' => EE_SOCIAL_BUTTONS_ADMIN . 'Social_Buttons_Admin_Page_Init.core.php',
+				),
 				'module_paths' 			=> array( EE_SOCIAL_BUTTONS_PATH .  'EED_Social_Buttons.module.php' ),
 				'pue_options'			=> array(
 					'pue_plugin_slug' 	=> 'eea-social_buttons',
