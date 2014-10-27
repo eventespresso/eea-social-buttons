@@ -183,17 +183,10 @@ class Social_Buttons_Admin_Page extends EE_Admin_Page {
 //	}
 	private function _sanitize_config_input( $top_level_key, $second_level_key, $value ){
 		$sanitization_methods = array(
-			'display'=>array(
-				'enable_social_buttons'=>'bool',
-//				'social_buttons_height'=>'int',
-//				'enable_social_buttons_filters'=>'bool',
-//				'enable_category_legend'=>'bool',
-//				'use_pickers'=>'bool',
-//				'event_background'=>'plaintext',
-//				'event_text_color'=>'plaintext',
-//				'enable_cat_classes'=>'bool',
-//				'disable_categories'=>'bool',
-//				'show_attendee_limit'=>'bool',
+			'social_buttons_config'=>array(
+				'show_social_buttons_event_list'=>'bool',
+				'show_social_buttons_single_event_page'=>'bool',
+				'show_social_buttons_confirmation_page'=>'bool',
 			)
 		);
 		$sanitization_method = NULL;

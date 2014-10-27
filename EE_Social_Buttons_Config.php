@@ -28,6 +28,22 @@
 
 class EE_Social_Buttons_Config extends EE_Config_Base {
 
+	public $show_social_buttons_event_list;
+	public $show_social_buttons_single_event_page;
+	public $show_social_buttons_confirmation_page;
+
+	/**
+	 *    class constructor
+	 *
+	 * @access    public
+	 * @return \EE_Organization_Config
+	 */
+	public function __construct() {
+		$this->show_social_buttons_event_list = 1;
+		$this->show_social_buttons_single_event_page = 1;
+		$this->show_social_buttons_confirmation_page = 1;
+		
+	}
 
 
 }
