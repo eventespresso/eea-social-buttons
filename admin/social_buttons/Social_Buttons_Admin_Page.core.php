@@ -183,11 +183,9 @@ class Social_Buttons_Admin_Page extends EE_Admin_Page {
 //	}
 	private function _sanitize_config_input( $top_level_key, $second_level_key, $value ){
 		$sanitization_methods = array(
-			'social_buttons_config'=>array(
 				'show_social_buttons_event_list'=>'bool',
 				'show_social_buttons_single_event_page'=>'bool',
 				'show_social_buttons_confirmation_page'=>'bool',
-			)
 		);
 		$sanitization_method = NULL;
 		if(isset($sanitization_methods[$top_level_key]) &&
