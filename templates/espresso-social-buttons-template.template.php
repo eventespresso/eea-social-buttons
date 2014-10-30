@@ -7,7 +7,7 @@
 			<h5 class="espresso-social-buttons-event-name-h5"><?php echo $event['event_name']; ?></h5>
 		<?php endif; ?>
 		<div id="espresso-social-buttons-dv-twitter" class="espresso-social-button-dv">
-			<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo $event['event_permalink']; ?>" data-text="<?php echo $tweet_message; ?>"  data-via="<?php echo $event['co_twitter']; ?>" data-size="large"><?php echo __('Tweet', 'event_espresso'); ?></a>
+			<a href="https://twitter.com/share" class="twitter-share-button" data-url="<?php echo $event['event_permalink']; ?>" data-text="<?php echo $event['tweet_message']; ?>"  data-via="<?php echo $event['co_twitter']; ?>" data-size="large"><?php echo __('Tweet', 'event_espresso'); ?></a>
 		</div>
 		<div id="espresso-social-buttons-dv-facebook" class="espresso-social-button-dv">
 			<div id="fb-root"></div>
