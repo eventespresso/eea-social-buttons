@@ -14,7 +14,7 @@
 		</div>
 		<div id="espresso-social-buttons-dv-facebook" class="espresso-social-button-dv">
 			<div id="fb-root"></div>
-			<div class="fb-like" data-href="<?php echo $event['event_permalink']; ?>" data-send="true" data-width="450" data-show-faces="true"></div>
+			<div class="fb-like" data-href="<?php echo $event['event_permalink']; ?>" data-send="true" data-width="200" data-show-faces="true"></div>
 		</div>
 	</div>
 	<?php endforeach; ?>
