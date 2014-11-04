@@ -4,7 +4,7 @@
   Plugin URI: http://www.eventespresso.com
   Description: The Event Espresso Social Sharing add-on displays social media buttons on the registration overview page, after a successful registration in Event Espresso. Compatible with Event Espresso 4.4.4 or higher.
 
-  Version: 0.0.1.dev.002
+  Version: 1.0.p
   Author: Event Espresso
   Author URI: http://www.eventespresso.com
   Copyright 2014 Event Espresso (email : support@eventespresso.com)
@@ -37,7 +37,7 @@
  *
  * ------------------------------------------------------------------------
  */
-define( 'EE_SOCIAL_BUTTONS_VERSION', '0.0.1.dev.002' );
+define( 'EE_SOCIAL_BUTTONS_VERSION', '1.0.p' );
 define( 'EE_SOCIAL_BUTTONS_PLUGIN_FILE',  __FILE__ );
 define( 'EE_SOCIAL_BUTTONS_BASE_NAME', plugin_basename(__FILE__) );
 function load_espresso_social_buttons() {
