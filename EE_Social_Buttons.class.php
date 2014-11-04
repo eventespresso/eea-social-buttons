@@ -44,7 +44,7 @@ Class  EE_Social_Buttons extends EE_Addon {
 				),
 				'module_paths' 			=> array( EE_SOCIAL_BUTTONS_PATH .  'EED_Social_Buttons.module.php' ),
 				'pue_options'			=> array(
-					'pue_plugin_slug' 	=> 'eea-social_buttons',
+					'pue_plugin_slug' 	=> 'eea-events-social-sharing',
 					'plugin_basename' 	=> EE_SOCIAL_BUTTONS_BASE_NAME,
 					'checkPeriod' 		=> '24',
 					'use_wp_update' 	=> FALSE

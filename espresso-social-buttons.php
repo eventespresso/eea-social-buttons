@@ -1,8 +1,8 @@
 <?php
 /*
-  Plugin Name: Event Espresso - Social Buttons (EE4.4.4+)
+  Plugin Name: Event Espresso - Social Sharing (EE4.4.4+)
   Plugin URI: http://www.eventespresso.com
-  Description: The Event Espresso Social Buttons displays social media buttons on the registration overview page, after a successful registration in Event Espresso. Compatible with Event Espresso 4.4.4 or higher.
+  Description: The Event Espresso Social Sharing add-on displays social media buttons on the registration overview page, after a successful registration in Event Espresso. Compatible with Event Espresso 4.4.4 or higher.
 
   Version: 0.0.1.dev.002
   Author: Event Espresso
