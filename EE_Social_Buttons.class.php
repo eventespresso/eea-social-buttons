@@ -29,8 +29,8 @@ Class  EE_Social_Buttons extends EE_Addon {
 		EE_Register_Addon::register(
 			'Social_Buttons',
 			array(
-				'version' 				=> EE_SOCIAL_BUTTONS_VERSION,
-				'min_core_version' 		=> '4.4.4',
+				'version' 					=> EE_SOCIAL_BUTTONS_VERSION,
+				'min_core_version' => EE_SOCIAL_BUTTONS_CORE_VERSION_REQUIRED,
 				'main_file_path' 		=> EE_SOCIAL_BUTTONS_PLUGIN_FILE,
 				//'admin_path' 			=> EE_SOCIAL_BUTTONS_ADMIN,
 				//'admin_callback'		=> 'additional_admin_hooks',
