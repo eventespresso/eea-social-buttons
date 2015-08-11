@@ -37,6 +37,7 @@
  *
  * ------------------------------------------------------------------------
  */
+define( 'EE_SOCIAL_BUTTONS_CORE_VERSION_REQUIRED', '4.8.0.rc.0000' );
 define( 'EE_SOCIAL_BUTTONS_VERSION', '1.0.0.rc.002' );
 define( 'EE_SOCIAL_BUTTONS_PLUGIN_FILE',  __FILE__ );
 define( 'EE_SOCIAL_BUTTONS_BASE_NAME', plugin_basename(__FILE__) );
