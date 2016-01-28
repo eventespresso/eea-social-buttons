@@ -84,7 +84,7 @@ class EED_Social_Buttons {
 
 			//Get the Twitter handle, else use EventEspresso as the default
 			$co_twitter = EE_Registry::instance()->CFG->organization->twitter;
-			$default_twitter_user = apply_filters( 'FHEE__EEED_Social_Buttons__thank_you_page__default_twitter_user', 'EventEspresso' );
+			$default_twitter_user = apply_filters( 'FHEE__EED_Social_Buttons__thank_you_page_buttons__default_twitter_user', 'EventEspresso' );
 			$co_twitter = ! empty( $co_twitter ) ? str_replace( array( 'twitter.com/', 'http://', 'https://' ), "", $co_twitter ) : $default_twitter_user;
 
 			$template_args = array(
