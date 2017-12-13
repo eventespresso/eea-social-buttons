@@ -1,18 +1,19 @@
 {
-	"versionFile" : "eea-events-social-sharing.php",
-	"slug" : "eea-events-social-sharing",
-	"name" : "EE4 Events Social Sharing",
-	"archiveBaseUrl" : "http://build.eventespresso.com/",
-	"archiveBasePath" : "~/www/build/",
-	"releaseFilesRemove" : [
-		"src/tests/**",
-		"src/info.json",
-		"src/circle.yml",
-		"src/readme.txt"
-	],
-	"github" : false,
-	"awsbucket" : "",
-	"awsregion" : "",
-	"srcBuildFolderName" : "eea-events-social-sharing",
-	"textDomain" : "event_espresso"
+  "versionFile": "eea-events-social-sharing.php",
+  "slug": "eea-events-social-sharing",
+  "name": "EE4 Events Social Sharing",
+  "releaseFilesRemove": [
+    "src/tests/**",
+    "src/info.json",
+    "src/circle.yml",
+    "src/readme.txt"
+  ],
+  "github": false,
+  "awsbucket": "",
+  "awsregion": "",
+  "srcBuildFolderName": "eea-events-social-sharing",
+  "textDomain": "event_espresso",
+  "remoteNamesToPushTo": [
+    "demoee"
+  ]
 }
