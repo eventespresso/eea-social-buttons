@@ -7,7 +7,7 @@
  * @package			Event Espresso
  * @subpackage		espresso-social_buttons
  * @author			    Brent Christensen
- * @ version		 	$VID:$
+ * 
  *
  * ------------------------------------------------------------------------
  */
